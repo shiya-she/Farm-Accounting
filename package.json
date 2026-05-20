@@ -1,0 +1,28 @@
+{
+  "name": "farm-accounting",
+  "version": "1.0.0",
+  "description": "Farm Accounting - A NativeScript-Vue offline accounting app for Android",
+  "main": "app/app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "farm",
+    "accounting",
+    "nativescript",
+    "vue"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nativescript/core": "^9.0.18",
+    "@nativescript/webpack": "^5.0.35",
+    "nativescript-sqlite": "^2.8.6",
+    "nativescript-ui-chart": "^15.2.3",
+    "nativescript-vue": "^3.0.2",
+    "pinia": "^3.0.4"
+  }
+}
