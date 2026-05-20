@@ -18,12 +18,17 @@
     </GridLayout>
   </StackLayout>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'nativescript-vue';
 import { cnAmount } from '../utils/amount';
-export default {
-  props: { summary: Object, title: { type: String, default: '本月概览' } },
+import type { MonthSummary } from '../types';
+export default Vue.extend({
+  props: {
+    summary: { type: Object as () => MonthSummary, required: true },
+    title: { type: String, default: '本月概览' as string }
+  },
   methods: { cnAmount }
-};
+});
 </script>
 <style scoped>
 .summary-card { background-color: #fff; border-radius: 12; margin: 12; padding: 16; }

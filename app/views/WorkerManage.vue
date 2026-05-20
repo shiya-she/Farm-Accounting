@@ -21,21 +21,24 @@
     </StackLayout>
   </Page>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'nativescript-vue';
 import { useWorkersStore } from '../store/workers';
-export default {
-  data() { return { newName: '', newPhone: '' }; },
+import type { Worker } from '../types';
+
+export default Vue.extend({
+  data(): { newName: string; newPhone: string } { return { newName: '', newPhone: '' }; },
   computed: { store: () => useWorkersStore() },
-  async mounted() { await this.store.loadWorkers(); },
+  async mounted(): Promise<void> { await this.store.loadWorkers(); },
   methods: {
-    async add() {
+    async add(): Promise<void> {
       if (!this.newName.trim()) return;
       await this.store.addWorker(this.newName.trim(), this.newPhone.trim());
       this.newName = ''; this.newPhone = '';
     },
-    async del(w) { await this.store.deleteWorker(w.id); }
+    async del(w: Worker): Promise<void> { await this.store.deleteWorker(w.id); }
   }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }

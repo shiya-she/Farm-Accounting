@@ -6,10 +6,13 @@
       col="1" @tap="$emit('change', 'income')" />
   </GridLayout>
 </template>
-<script>
-export default {
-  props: { type: { type: String, default: 'expense' } }
-};
+<script lang="ts">
+import Vue from 'nativescript-vue';
+export default Vue.extend({
+  props: {
+    type: { type: String, default: 'expense' as string }
+  }
+});
 </script>
 <style scoped>
 .type-switch { margin: 8 0; }

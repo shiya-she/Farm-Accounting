@@ -7,10 +7,15 @@
     </StackLayout>
   </ScrollView>
 </template>
-<script>
-export default {
-  props: { categories: Array, selectedId: Number }
-};
+<script lang="ts">
+import Vue from 'nativescript-vue';
+import type { Category } from '../types';
+export default Vue.extend({
+  props: {
+    categories: { type: Array as () => Category[], required: true },
+    selectedId: { type: Number as () => number | null, default: null }
+  }
+});
 </script>
 <style scoped>
 .cat-list { padding: 4; }

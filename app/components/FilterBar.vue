@@ -5,8 +5,13 @@
     <Button text="收入" :class="activeType === 'income' ? 'filter-active' : 'filter-btn'" col="2" @tap="$emit('filterChange', { type: 'income' })" />
   </GridLayout>
 </template>
-<script>
-export default { props: { activeType: String } };
+<script lang="ts">
+import Vue from 'nativescript-vue';
+export default Vue.extend({
+  props: {
+    activeType: { type: String as () => string | null, default: null }
+  }
+});
 </script>
 <style scoped>
 .filter-bar { padding: 8; background-color: #fafafa; }

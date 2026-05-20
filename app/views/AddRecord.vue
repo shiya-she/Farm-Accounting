@@ -39,19 +39,30 @@
     </ScrollView>
   </Page>
 </template>
-<script>
-import TypeSwitch from '../components/TypeSwitch';
-import CategoryPicker from '../components/CategoryPicker';
-import WorkerPicker from '../components/WorkerPicker';
-import ProductPicker from '../components/ProductPicker';
+<script lang="ts">
+import Vue from 'nativescript-vue';
+import TypeSwitch from '../components/TypeSwitch.vue';
+import CategoryPicker from '../components/CategoryPicker.vue';
+import WorkerPicker from '../components/WorkerPicker.vue';
+import ProductPicker from '../components/ProductPicker.vue';
 import { useRecordsStore } from '../store/records';
 import { useCategoriesStore } from '../store/categories';
 import { useWorkersStore } from '../store/workers';
 import { useProductsStore } from '../store/products';
+import type { AddRecordForm, Category, Product, Worker } from '../types';
 
-export default {
+interface FormData {
+  form: AddRecordForm;
+  amountText: string;
+  weightText: string;
+  unitPriceText: string;
+  totalPriceText: string;
+  selectedUnit: string;
+}
+
+export default Vue.extend({
   components: { TypeSwitch, CategoryPicker, WorkerPicker, ProductPicker },
-  data() {
+  data(): FormData {
     return {
       form: { type: 'expense', category_id: null, worker_id: null,
         product_id: null, date: new Date(), note: '' },
@@ -64,19 +75,19 @@ export default {
     workersStore: () => useWorkersStore(),
     productsStore: () => useProductsStore(),
     recordsStore: () => useRecordsStore(),
-    currentCats() {
+    currentCats(): Category[] {
       return this.form.type === 'expense'
         ? this.categoriesStore.expenseCategories
         : this.categoriesStore.incomeCategories;
     },
-    showWorker() {
+    showWorker(): boolean {
       if (this.form.type !== 'expense') return false;
-      const cat = this.categoriesStore.categories.find(c => c.id === this.form.category_id);
-      return cat && cat.name === '雇工工资';
+      const cat = this.categoriesStore.categories.find((c: Category) => c.id === this.form.category_id);
+      return !!cat && cat.name === '雇工工资';
     },
-    showProduct() { return this.form.type === 'income'; }
+    showProduct(): boolean { return this.form.type === 'income'; }
   },
-  async mounted() {
+  async mounted(): Promise<void> {
     await Promise.all([
       this.categoriesStore.loadCategories(),
       this.workersStore.loadWorkers(),
@@ -84,15 +95,15 @@ export default {
     ]);
   },
   methods: {
-    onProductSelect(p) { this.form.product_id = p.id; this.selectedUnit = p.unit || ''; },
-    async save() {
+    onProductSelect(p: Product): void { this.form.product_id = p.id; this.selectedUnit = p.unit || ''; },
+    async save(): Promise<void> {
       const amount = parseFloat(this.amountText);
       if (isNaN(amount) || amount <= 0) { alert('请输入有效金额'); return; }
       if (!this.form.category_id) { alert('请选择分类'); return; }
       const d = this.form.date;
       const dateStr = d instanceof Date
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`
-        : this.form.date;
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+        : String(d);
       await this.recordsStore.addRecord({
         type: this.form.type, amount, category_id: this.form.category_id,
         worker_id: this.form.worker_id, product_id: this.form.product_id,
@@ -107,7 +118,7 @@ export default {
       this.form.worker_id = null; this.form.product_id = null;
     }
   }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }

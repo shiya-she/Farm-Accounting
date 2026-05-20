@@ -10,8 +10,14 @@
       :class="record.type === 'income' ? 'income-amount' : 'expense-amount'" />
   </GridLayout>
 </template>
-<script>
-export default { props: { record: Object } };
+<script lang="ts">
+import Vue from 'nativescript-vue';
+import type { RecordJoined } from '../types';
+export default Vue.extend({
+  props: {
+    record: { type: Object as () => RecordJoined, required: true }
+  }
+});
 </script>
 <style scoped>
 .record-item { padding: 12 8; border-bottom-width: 1; border-bottom-color: #eee; }

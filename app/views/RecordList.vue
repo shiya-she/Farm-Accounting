@@ -12,19 +12,25 @@
     </StackLayout>
   </Page>
 </template>
-<script>
-import FilterBar from '../components/FilterBar';
-import RecordItem from '../components/RecordItem';
+<script lang="ts">
+import Vue from 'nativescript-vue';
+import FilterBar from '../components/FilterBar.vue';
+import RecordItem from '../components/RecordItem.vue';
 import { useRecordsStore } from '../store/records';
-export default {
+import type { RecordFilters } from '../types';
+
+export default Vue.extend({
   components: { FilterBar, RecordItem },
-  data() { return { filters: {} }; },
+  data(): { filters: RecordFilters } { return { filters: {} }; },
   computed: { recordsStore: () => useRecordsStore() },
-  async mounted() { await this.recordsStore.loadRecords(); },
+  async mounted(): Promise<void> { await this.recordsStore.loadRecords(); },
   methods: {
-    async onFilter(f) { this.filters = { ...f }; await this.recordsStore.loadRecords(this.filters); }
+    async onFilter(f: RecordFilters): Promise<void> {
+      this.filters = { ...f };
+      await this.recordsStore.loadRecords(this.filters);
+    }
   }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }

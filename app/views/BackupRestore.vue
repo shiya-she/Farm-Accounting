@@ -18,17 +18,27 @@
     </StackLayout>
   </Page>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'nativescript-vue';
 import { BackupService } from '../services/BackupService';
-export default {
-  data() { return { backups: [] }; },
-  async mounted() { await this.loadBackups(); },
+import type { BackupEntry } from '../services/BackupService';
+
+export default Vue.extend({
+  data(): { backups: BackupEntry[] } { return { backups: [] }; },
+  async mounted(): Promise<void> { await this.loadBackups(); },
   methods: {
-    async loadBackups() { this.backups = await BackupService.listBackups(); },
-    async backupNow() { await BackupService.backup(); alert('备份成功'); await this.loadBackups(); },
-    async restore(item) { await BackupService.restore(item.filename); alert('恢复成功，请重启应用'); }
+    async loadBackups(): Promise<void> { this.backups = await BackupService.listBackups(); },
+    async backupNow(): Promise<void> {
+      await BackupService.backup();
+      alert('备份成功');
+      await this.loadBackups();
+    },
+    async restore(item: BackupEntry): Promise<void> {
+      await BackupService.restore(item.filename);
+      alert('恢复成功，请重启应用');
+    }
   }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }

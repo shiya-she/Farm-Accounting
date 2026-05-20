@@ -25,5 +25,8 @@
     "nativescript-vue": "^3.0.2",
     "pinia": "^3.0.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nativescript/types": "^9.0.0",
+    "typescript": "^6.0.3"
+  }
 }

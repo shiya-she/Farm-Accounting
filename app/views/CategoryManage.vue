@@ -22,21 +22,26 @@
     </StackLayout>
   </Page>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'nativescript-vue';
 import { useCategoriesStore } from '../store/categories';
-export default {
-  data() { return { newName: '', newType: 'expense' }; },
+import type { Category } from '../types';
+
+export default Vue.extend({
+  data(): { newName: string; newType: 'income' | 'expense' } {
+    return { newName: '', newType: 'expense' };
+  },
   computed: { store: () => useCategoriesStore() },
-  async mounted() { await this.store.loadCategories(); },
+  async mounted(): Promise<void> { await this.store.loadCategories(); },
   methods: {
-    async addCategory() {
+    async addCategory(): Promise<void> {
       if (!this.newName.trim()) return;
       await this.store.addCategory(this.newType, this.newName.trim());
       this.newName = '';
     },
-    async del(c) { await this.store.deleteCategory(c.id); }
+    async del(c: Category): Promise<void> { await this.store.deleteCategory(c.id); }
   }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }

@@ -14,14 +14,15 @@
     </ScrollView>
   </Page>
 </template>
-<script>
-import CategoryManage from './CategoryManage';
-import WorkerManage from './WorkerManage';
-import ProductManage from './ProductManage';
-import BackupRestore from './BackupRestore';
-export default {
+<script lang="ts">
+import Vue from 'nativescript-vue';
+import CategoryManage from './CategoryManage.vue';
+import WorkerManage from './WorkerManage.vue';
+import ProductManage from './ProductManage.vue';
+import BackupRestore from './BackupRestore.vue';
+export default Vue.extend({
   components: { CategoryManage, WorkerManage, ProductManage, BackupRestore }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }

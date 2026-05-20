@@ -21,21 +21,24 @@
     </StackLayout>
   </Page>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'nativescript-vue';
 import { useProductsStore } from '../store/products';
-export default {
-  data() { return { newName: '', newUnit: '' }; },
+import type { Product } from '../types';
+
+export default Vue.extend({
+  data(): { newName: string; newUnit: string } { return { newName: '', newUnit: '' }; },
   computed: { store: () => useProductsStore() },
-  async mounted() { await this.store.loadProducts(); },
+  async mounted(): Promise<void> { await this.store.loadProducts(); },
   methods: {
-    async add() {
+    async add(): Promise<void> {
       if (!this.newName.trim()) return;
       await this.store.addProduct(this.newName.trim(), this.newUnit.trim());
       this.newName = ''; this.newUnit = '';
     },
-    async del(p) { await this.store.deleteProduct(p.id); }
+    async del(p: Product): Promise<void> { await this.store.deleteProduct(p.id); }
   }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }

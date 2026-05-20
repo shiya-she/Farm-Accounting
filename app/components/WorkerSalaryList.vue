@@ -8,9 +8,16 @@
     <Label v-if="!data.length" text="暂无数据" class="empty" />
   </StackLayout>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'nativescript-vue';
 import { cnAmount } from '../utils/amount';
-export default { props: { data: Array }, methods: { cnAmount } };
+import type { WorkerSalaryStat } from '../types';
+export default Vue.extend({
+  props: {
+    data: { type: Array as () => WorkerSalaryStat[], required: true }
+  },
+  methods: { cnAmount }
+});
 </script>
 <style scoped>
 .chart-container { margin: 12; padding: 12; background-color: #fff; border-radius: 12; }

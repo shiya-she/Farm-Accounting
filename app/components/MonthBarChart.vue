@@ -20,18 +20,22 @@
     </StackLayout>
   </StackLayout>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'nativescript-vue';
 import { cnAmount } from '../utils/amount';
-export default {
-  props: { data: Array },
+import type { MonthlyTrendItem } from '../types';
+export default Vue.extend({
+  props: {
+    data: { type: Array as () => MonthlyTrendItem[], required: true }
+  },
   methods: {
     cnAmount,
-    pct(val) {
-      const max = Math.max(1, ...this.data.flatMap(d => [d.income, d.expense]));
+    pct(val: number): number {
+      const max = Math.max(1, ...this.data.flatMap((d: MonthlyTrendItem) => [d.income, d.expense]));
       return Math.max(2, (val / max) * 100);
     }
   }
-};
+});
 </script>
 <style scoped>
 .chart-container { margin: 12; padding: 12; background-color: #fff; border-radius: 12; }

@@ -1,7 +1,11 @@
 import { getDb } from '../database';
+import type {
+  RecordJoined, InsertRecord, UpdateRecord, RecordFilters,
+  MonthSummary, CategoryStat, WorkerSalaryStat, ProductSalesStat
+} from '../../types';
 
 export const RecordDAO = {
-  async getAll(filters = {}) {
+  async getAll(filters: RecordFilters = {}): Promise<RecordJoined[]> {
     const db = await getDb();
     let sql = `
       SELECT r.*, c.name as category_name, c.type as category_type,
@@ -12,7 +16,7 @@ export const RecordDAO = {
       LEFT JOIN products p ON r.product_id = p.id
       WHERE 1=1
     `;
-    const params = [];
+    const params: (string | number)[] = [];
 
     if (filters.type) {
       sql += ' AND r.type = ?';
@@ -30,10 +34,10 @@ export const RecordDAO = {
       params.push(filters.limit);
     }
 
-    return db.all(sql, params);
+    return db.all(sql, params as unknown[]) as Promise<RecordJoined[]>;
   },
 
-  async getById(id) {
+  async getById(id: number): Promise<RecordJoined | undefined> {
     const db = await getDb();
     return db.get(`
       SELECT r.*, c.name as category_name, c.type as category_type,
@@ -43,10 +47,10 @@ export const RecordDAO = {
       LEFT JOIN workers w ON r.worker_id = w.id
       LEFT JOIN products p ON r.product_id = p.id
       WHERE r.id = ?
-    `, [id]);
+    `, [id]) as Promise<RecordJoined | undefined>;
   },
 
-  async insert(record) {
+  async insert(record: InsertRecord): Promise<void> {
     const db = await getDb();
     await db.execSQL(
       `INSERT INTO records (type, amount, category_id, worker_id, product_id,
@@ -59,7 +63,7 @@ export const RecordDAO = {
     );
   },
 
-  async update(record) {
+  async update(record: UpdateRecord): Promise<void> {
     const db = await getDb();
     await db.execSQL(
       `UPDATE records SET type=?, amount=?, category_id=?, worker_id=?,
@@ -72,32 +76,32 @@ export const RecordDAO = {
     );
   },
 
-  async deleteById(id) {
+  async deleteById(id: number): Promise<void> {
     const db = await getDb();
     await db.execSQL('DELETE FROM records WHERE id = ?', [id]);
   },
 
-  async getMonthSummary(yearMonth) {
+  async getMonthSummary(yearMonth: string): Promise<MonthSummary> {
     const db = await getDb();
     return db.get(`
       SELECT
         COALESCE(SUM(CASE WHEN type='income' THEN amount ELSE 0 END), 0) as totalIncome,
         COALESCE(SUM(CASE WHEN type='expense' THEN amount ELSE 0 END), 0) as totalExpense
       FROM records WHERE date LIKE ?
-    `, [yearMonth + '%']);
+    `, [yearMonth + '%']) as Promise<MonthSummary>;
   },
 
-  async getCategoryStats(type, yearMonth) {
+  async getCategoryStats(type: string, yearMonth: string): Promise<CategoryStat[]> {
     const db = await getDb();
     return db.all(`
       SELECT c.name, SUM(r.amount) as total
       FROM records r JOIN categories c ON r.category_id = c.id
       WHERE r.type = ? AND r.date LIKE ?
       GROUP BY c.id, c.name ORDER BY total DESC
-    `, [type, yearMonth + '%']);
+    `, [type, yearMonth + '%']) as Promise<CategoryStat[]>;
   },
 
-  async getWorkerSalaryStats(yearMonth) {
+  async getWorkerSalaryStats(yearMonth: string): Promise<WorkerSalaryStat[]> {
     const db = await getDb();
     return db.all(`
       SELECT w.name, SUM(r.amount) as total
@@ -105,10 +109,10 @@ export const RecordDAO = {
       WHERE r.category_id = (SELECT id FROM categories WHERE name='雇工工资' LIMIT 1)
         AND r.date LIKE ?
       GROUP BY w.id, w.name ORDER BY total DESC
-    `, [yearMonth + '%']);
+    `, [yearMonth + '%']) as Promise<WorkerSalaryStat[]>;
   },
 
-  async getProductSalesStats(yearMonth) {
+  async getProductSalesStats(yearMonth: string): Promise<ProductSalesStat[]> {
     const db = await getDb();
     return db.all(`
       SELECT p.name, p.unit, SUM(r.weight) as totalWeight,
@@ -116,6 +120,6 @@ export const RecordDAO = {
       FROM records r JOIN products p ON r.product_id = p.id
       WHERE r.type='income' AND r.product_id IS NOT NULL AND r.date LIKE ?
       GROUP BY p.id, p.name, p.unit ORDER BY totalAmount DESC
-    `, [yearMonth + '%']);
+    `, [yearMonth + '%']) as Promise<ProductSalesStat[]>;
   }
 };

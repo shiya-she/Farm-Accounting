@@ -8,14 +8,15 @@
     <TabViewItem title="设置"><Frame><Settings /></Frame></TabViewItem>
   </TabView>
 </template>
-<script>
-import Dashboard from '../views/Dashboard';
-import AddRecord from '../views/AddRecord';
-import RecordList from '../views/RecordList';
-import Statistics from '../views/Statistics';
-import Settings from '../views/Settings';
-export default {
+<script lang="ts">
+import Vue from 'nativescript-vue';
+import Dashboard from '../views/Dashboard.vue';
+import AddRecord from '../views/AddRecord.vue';
+import RecordList from '../views/RecordList.vue';
+import Statistics from '../views/Statistics.vue';
+import Settings from '../views/Settings.vue';
+export default Vue.extend({
   components: { Dashboard, AddRecord, RecordList, Statistics, Settings },
-  data() { return { tab: 0 }; }
-};
+  data(): { tab: number } { return { tab: 0 }; }
+});
 </script>

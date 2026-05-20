@@ -2,16 +2,22 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "node",
-    "allowJs": true,
-    "checkJs": false,
+    "moduleResolution": "bundler",
+    "allowJs": false,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "~/*": ["app/*"]
-    }
+    },
+    "types": ["@nativescript/types"]
   },
-  "include": ["app/**/*", "references.d.ts"]
+  "include": ["app/**/*.ts", "app/**/*.vue", "references.d.ts"],
+  "exclude": ["node_modules"]
 }

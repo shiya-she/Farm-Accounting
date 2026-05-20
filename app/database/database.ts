@@ -1,18 +1,18 @@
-const Sqlite = require('nativescript-sqlite');
+import Sqlite from 'nativescript-sqlite';
 
-let db = null;
+let db: Sqlite | null = null;
 
-export async function getDb() {
+export async function getDb(): Promise<Sqlite> {
   if (db) return db;
   db = await new Sqlite('farm-accounting.db');
   await db.execSQL('PRAGMA foreign_keys = ON');
   return db;
 }
 
-export async function initDatabase() {
-  const db = await getDb();
+export async function initDatabase(): Promise<void> {
+  const database = await getDb();
 
-  await db.execSQL(`
+  await database.execSQL(`
     CREATE TABLE IF NOT EXISTS categories (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       type TEXT NOT NULL,
@@ -22,7 +22,7 @@ export async function initDatabase() {
       is_preset INTEGER DEFAULT 0
     )
   `);
-  await db.execSQL(`
+  await database.execSQL(`
     CREATE TABLE IF NOT EXISTS workers (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
@@ -31,7 +31,7 @@ export async function initDatabase() {
       created_at TEXT
     )
   `);
-  await db.execSQL(`
+  await database.execSQL(`
     CREATE TABLE IF NOT EXISTS products (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
@@ -39,7 +39,7 @@ export async function initDatabase() {
       created_at TEXT
     )
   `);
-  await db.execSQL(`
+  await database.execSQL(`
     CREATE TABLE IF NOT EXISTS records (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       type TEXT NOT NULL,
@@ -59,11 +59,11 @@ export async function initDatabase() {
     )
   `);
 
-  await seedCategories(db);
+  await seedCategories(database);
 }
 
-async function seedCategories(db) {
-  const count = await db.get('SELECT COUNT(*) as cnt FROM categories');
+async function seedCategories(database: Sqlite): Promise<void> {
+  const count = await database.get('SELECT COUNT(*) as cnt FROM categories');
   if (count.cnt > 0) return;
 
   const expenseCategories = [
@@ -75,13 +75,13 @@ async function seedCategories(db) {
   ];
 
   for (let i = 0; i < expenseCategories.length; i++) {
-    await db.execSQL(
+    await database.execSQL(
       'INSERT INTO categories (type, name, sort_order, is_preset) VALUES (?, ?, ?, 1)',
       ['expense', expenseCategories[i], i]
     );
   }
   for (let i = 0; i < incomeCategories.length; i++) {
-    await db.execSQL(
+    await database.execSQL(
       'INSERT INTO categories (type, name, sort_order, is_preset) VALUES (?, ?, ?, 1)',
       ['income', incomeCategories[i], i]
     );

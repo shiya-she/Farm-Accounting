@@ -17,28 +17,39 @@
     </ScrollView>
   </Page>
 </template>
-<script>
-import MonthSummaryCard from '../components/MonthSummaryCard';
-import MonthBarChart from '../components/MonthBarChart';
-import CategoryPieChart from '../components/CategoryPieChart';
-import WorkerSalaryList from '../components/WorkerSalaryList';
-import ProductSalesList from '../components/ProductSalesList';
+<script lang="ts">
+import Vue from 'nativescript-vue';
+import MonthSummaryCard from '../components/MonthSummaryCard.vue';
+import MonthBarChart from '../components/MonthBarChart.vue';
+import CategoryPieChart from '../components/CategoryPieChart.vue';
+import WorkerSalaryList from '../components/WorkerSalaryList.vue';
+import ProductSalesList from '../components/ProductSalesList.vue';
 import { StatsService } from '../services/StatsService';
+import type { MonthSummary, MonthlyTrendItem, CategoryStat, WorkerSalaryStat, ProductSalesStat } from '../types';
 
-export default {
+interface StatsData {
+  currentYear: number;
+  summary: MonthSummary;
+  monthlyTrend: MonthlyTrendItem[];
+  categoryStats: CategoryStat[];
+  workerStats: WorkerSalaryStat[];
+  productStats: ProductSalesStat[];
+}
+
+export default Vue.extend({
   components: { MonthSummaryCard, MonthBarChart, CategoryPieChart, WorkerSalaryList, ProductSalesList },
-  data() {
+  data(): StatsData {
     return {
       currentYear: new Date().getFullYear(),
       summary: { totalIncome: 0, totalExpense: 0 },
       monthlyTrend: [], categoryStats: [], workerStats: [], productStats: []
     };
   },
-  async mounted() { await this.loadStats(); },
+  async mounted(): Promise<void> { await this.loadStats(); },
   methods: {
-    async loadStats() {
+    async loadStats(): Promise<void> {
       let yearIncome = 0, yearExpense = 0;
-      const trend = [];
+      const trend: MonthlyTrendItem[] = [];
       const currentMonth = new Date().getMonth() + 1;
       for (let m = 1; m <= currentMonth; m++) {
         const ym = `${this.currentYear}-${String(m).padStart(2, '0')}`;
@@ -54,10 +65,10 @@ export default {
       this.workerStats = await StatsService.getWorkerSalaryStats(cm);
       this.productStats = await StatsService.getProductSalesStats(cm);
     },
-    prevYear() { this.currentYear--; this.loadStats(); },
-    nextYear() { this.currentYear++; this.loadStats(); }
+    prevYear(): void { this.currentYear--; this.loadStats(); },
+    nextYear(): void { this.currentYear++; this.loadStats(); }
   }
-};
+});
 </script>
 <style scoped>
 .page { background-color: #f5f5f5; }
