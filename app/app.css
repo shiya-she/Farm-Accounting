@@ -1,3 +1,8 @@
-/* Farm Accounting - Global Styles */
 page { background-color: #f5f5f5; font-family: sans-serif; }
 ActionBar { background-color: #2e6b3e; color: white; }
+TabView {
+  tab-text-color: #888;
+  selected-tab-text-color: #2e6b3e;
+  tab-background-color: white;
+  android-selected-tab-highlight-color: #2e6b3e;
+}

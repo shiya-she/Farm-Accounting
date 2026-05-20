@@ -1,9 +1,15 @@
-// Farm Accounting - App Entry Point
-// Full assembly in Task 20
-const Vue = require('nativescript-vue');
-Vue.registerElement('TabView', () => require('@nativescript/core').TabView);
-Vue.registerElement('TabViewItem', () => require('@nativescript/core').TabViewItem);
+import Vue from 'nativescript-vue';
+import { createPinia } from 'pinia';
+import { initDatabase } from './database/database';
+import { BackupService } from './services/BackupService';
+import App from './components/App';
+
+Vue.use(createPinia());
 
 new Vue({
-  template: '<page><actionbar title="Farm Accounting" /><label text="Loading..." /></page>'
+  render: h => h('frame', [h(App)]),
+  async created() {
+    await initDatabase();
+    try { await BackupService.backup(); } catch (e) { /* best-effort */ }
+  }
 }).$start();
