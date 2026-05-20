@@ -24,5 +24,6 @@
     "nativescript-ui-chart": "^15.2.3",
     "nativescript-vue": "^3.0.2",
     "pinia": "^3.0.4"
-  }
+  },
+  "devDependencies": {}
 }
