@@ -18,8 +18,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nativescript/android": "^9.0.0",
     "@nativescript/core": "^9.0.18",
     "@nativescript/webpack": "^5.0.35",
+    "acorn-stage3": "^4.0.0",
+    "ajv": "^8.0.0",
     "nativescript-sqlite": "^2.8.6",
     "nativescript-ui-chart": "^15.2.3",
     "nativescript-vue": "^3.0.2",
