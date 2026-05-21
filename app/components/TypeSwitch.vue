@@ -15,7 +15,7 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.type-switch { margin: 8 0; }
-.btn-active { background-color: #2e6b3e; color: white; font-weight: bold; }
-.btn-inactive { background-color: #e0e0e0; color: #666; }
+.type-switch { margin: var(--spacing-sm) 0; background-color: var(--color-bg); border-radius: var(--radius-md); padding: 4; }
+.btn-active { background-color: var(--color-primary); color: var(--color-text-inverse); font-weight: var(--font-bold); border-radius: var(--radius-sm); }
+.btn-inactive { background-color: transparent; color: var(--color-text-secondary); font-weight: var(--font-medium); }
 </style>

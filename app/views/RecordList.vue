@@ -33,6 +33,6 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
-.empty { text-align: center; color: #999; font-size: 14; margin: 40; }
+.page { background-color: var(--color-bg); }
+.empty { text-align: center; color: var(--color-text-muted); font-size: var(--text-base); margin: var(--spacing-3xl); }
 </style>

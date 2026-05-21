@@ -41,13 +41,13 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
-.content { padding: 16; }
-.section-title { font-size: 16; font-weight: bold; color: #333; margin-bottom: 8; }
-.desc { font-size: 13; color: #666; margin-bottom: 12; }
-.btn-main { background-color: #2e6b3e; color: white; border-radius: 8; padding: 12; font-weight: bold; }
-.btn-restore { background-color: #3498db; color: white; font-size: 12; padding: 6 16; border-radius: 4; }
-.item-row { padding: 12 8; background-color: white; border-bottom-width: 1; border-bottom-color: #eee; }
-.item-name { font-size: 14; color: #333; }
-.empty { text-align: center; color: #999; font-size: 13; margin: 20; }
+.page { background-color: var(--color-bg); }
+.content { padding: var(--spacing-base); }
+.section-title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--color-text); margin-bottom: var(--spacing-sm); }
+.desc { font-size: var(--text-sm); color: var(--color-text-secondary); margin-bottom: var(--spacing-md); }
+.btn-main { background-color: var(--color-primary); color: var(--color-text-inverse); border-radius: var(--radius-md); padding: var(--spacing-md); font-weight: var(--font-semibold); elevation: var(--elevation-sm); }
+.btn-restore { background-color: var(--color-accent); color: var(--color-text-inverse); font-size: var(--text-sm); padding: var(--spacing-xs) var(--spacing-base); border-radius: var(--radius-sm); font-weight: var(--font-medium); }
+.item-row { padding: var(--spacing-md) var(--spacing-sm); background-color: var(--color-surface); border-bottom-width: 1; border-bottom-color: var(--color-divider); }
+.item-name { font-size: var(--text-base); color: var(--color-text); }
+.empty { text-align: center; color: var(--color-text-muted); font-size: var(--text-sm); margin: var(--spacing-lg); }
 </style>

@@ -14,7 +14,7 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.filter-bar { padding: 8; background-color: #fafafa; }
-.filter-btn { background-color: #e0e0e0; color: #666; font-size: 12; margin: 2; }
-.filter-active { background-color: #2e6b3e; color: white; font-size: 12; margin: 2; }
+.filter-bar { padding: var(--spacing-sm); background-color: var(--color-surface); border-bottom-width: 1; border-bottom-color: var(--color-border); }
+.filter-btn { background-color: var(--color-bg); color: var(--color-text-secondary); font-size: var(--text-sm); margin: 2; border-radius: var(--radius-sm); font-weight: var(--font-medium); }
+.filter-active { background-color: var(--color-primary); color: var(--color-text-inverse); font-size: var(--text-sm); margin: 2; border-radius: var(--radius-sm); font-weight: var(--font-semibold); }
 </style>

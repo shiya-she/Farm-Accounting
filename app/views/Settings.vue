@@ -7,7 +7,7 @@
         <Button text="工人管理" class="menu-btn" @tap="$navigateTo(WorkerManage)" />
         <Button text="产出物管理" class="menu-btn" @tap="$navigateTo(ProductManage)" />
         <Button text="备份与恢复" class="menu-btn" @tap="$navigateTo(BackupRestore)" />
-        <Label style="margin-top: 40;" />
+        <Label style="margin-top: var(--spacing-2xl);" />
         <Label text="农场记账 v1.0" class="about" />
         <Label text="离线记账，数据安全" class="about-sub" />
       </StackLayout>
@@ -25,9 +25,9 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
-.content { padding: 16; }
-.menu-btn { background-color: white; color: #333; font-size: 15; text-align: left; padding: 14 16; margin: 4 0; border-radius: 8; }
-.about { font-size: 14; color: #333; text-align: center; }
-.about-sub { font-size: 12; color: #999; text-align: center; margin-top: 4; }
+.page { background-color: var(--color-bg); }
+.content { padding: var(--spacing-base); }
+.menu-btn { background-color: var(--color-surface); color: var(--color-text); font-size: var(--text-base); font-weight: var(--font-medium); text-align: left; padding: var(--spacing-base); margin: var(--spacing-xs) 0; border-radius: var(--radius-md); elevation: var(--elevation-sm); border-width: 1; border-color: var(--color-border); }
+.about { font-size: var(--text-sm); color: var(--color-text-secondary); text-align: center; margin-top: var(--spacing-2xl); }
+.about-sub { font-size: var(--text-xs); color: var(--color-text-muted); text-align: center; margin-top: var(--spacing-xs); }
 </style>

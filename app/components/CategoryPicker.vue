@@ -18,7 +18,7 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.cat-list { padding: 4; }
-.cat-item { background-color: #f0f0f0; margin: 4; border-radius: 20; padding: 8 16; font-size: 13; }
-.cat-selected { background-color: #2e6b3e; color: white; margin: 4; border-radius: 20; padding: 8 16; font-size: 13; }
+.cat-list { padding: var(--spacing-xs); }
+.cat-item { background-color: var(--color-bg); margin: var(--spacing-xs); border-radius: var(--radius-full); padding: var(--spacing-sm) var(--spacing-base); font-size: var(--text-sm); color: var(--color-text-secondary); font-weight: var(--font-medium); }
+.cat-selected { background-color: var(--color-primary); color: var(--color-text-inverse); margin: var(--spacing-xs); border-radius: var(--radius-full); padding: var(--spacing-sm) var(--spacing-base); font-size: var(--text-sm); font-weight: var(--font-semibold); }
 </style>

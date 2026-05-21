@@ -29,5 +29,5 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.field-label { font-size: 14; color: #555; margin: 8 0 4; }
+.field-label { font-size: var(--text-sm); color: var(--color-text-secondary); margin: var(--spacing-sm) 0 var(--spacing-xs); font-weight: var(--font-medium); }
 </style>

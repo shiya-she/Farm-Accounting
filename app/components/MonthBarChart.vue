@@ -38,15 +38,15 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.chart-container { margin: 12; padding: 12; background-color: #fff; border-radius: 12; }
-.chart-title { font-size: 14; font-weight: bold; color: #333; margin-bottom: 8; }
-.bar-row { margin: 4 0; }
-.bar-label { font-size: 11; color: #666; vertical-align: center; }
+.chart-container { margin: var(--spacing-sm) var(--spacing-base); padding: var(--spacing-base); background-color: var(--color-surface); border-radius: var(--radius-lg); elevation: var(--elevation-sm); border-width: 1; border-color: var(--color-border); }
+.chart-title { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); margin-bottom: var(--spacing-sm); }
+.bar-row { margin: var(--spacing-xs) 0; }
+.bar-label { font-size: var(--text-xs); color: var(--color-text-secondary); vertical-align: center; }
 .bar-value { font-size: 10; }
-.bar-bg { background-color: #eee; height: 8; border-radius: 4; margin-top: 2; }
-.bar-fill { height: 8; border-radius: 4; }
-.income-bg { background-color: #27ae60; }
-.expense-bg { background-color: #e74c3c; }
-.income { color: #27ae60; }
-.expense { color: #e74c3c; }
+.bar-bg { background-color: var(--color-bg); height: 8; border-radius: var(--radius-sm); margin-top: 2; }
+.bar-fill { height: 8; border-radius: var(--radius-sm); }
+.income-bg { background-color: var(--color-income); }
+.expense-bg { background-color: var(--color-expense); }
+.income { color: var(--color-income); }
+.expense { color: var(--color-expense); }
 </style>

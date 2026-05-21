@@ -41,13 +41,13 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
-.content { padding: 12; }
-.add-row { margin-bottom: 12; }
-.input { border-width: 1; border-color: #ddd; border-radius: 8; padding: 10; background-color: white; margin: 2; }
-.btn-add { background-color: #2e6b3e; color: white; border-radius: 8; margin-left: 4; padding: 10 12; }
-.item-row { padding: 12 8; background-color: white; border-bottom-width: 1; border-bottom-color: #eee; }
-.item-name { font-size: 14; color: #333; }
-.item-sub { font-size: 12; color: #999; }
-.btn-del { background-color: #e74c3c; color: white; font-size: 12; padding: 4 12; border-radius: 4; }
+.page { background-color: var(--color-bg); }
+.content { padding: var(--spacing-base); }
+.add-row { margin-bottom: var(--spacing-md); }
+.input { border-width: 1; border-color: var(--color-border); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-md); background-color: var(--color-surface); margin: 2; color: var(--color-text); font-size: var(--text-base); }
+.btn-add { background-color: var(--color-primary); color: var(--color-text-inverse); border-radius: var(--radius-md); margin-left: var(--spacing-xs); padding: var(--spacing-sm) var(--spacing-md); font-weight: var(--font-semibold); }
+.item-row { padding: var(--spacing-md) var(--spacing-sm); background-color: var(--color-surface); border-bottom-width: 1; border-bottom-color: var(--color-divider); }
+.item-name { font-size: var(--text-base); color: var(--color-text); font-weight: var(--font-medium); }
+.item-sub { font-size: var(--text-sm); color: var(--color-text-muted); }
+.btn-del { background-color: var(--color-expense); color: var(--color-text-inverse); font-size: var(--text-sm); padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-sm); font-weight: var(--font-medium); }
 </style>

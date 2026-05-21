@@ -21,6 +21,6 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.section-title { font-size: 14; font-weight: bold; color: #333; margin: 8 12; }
-.empty-text { text-align: center; color: #999; font-size: 14; margin: 20; }
+.section-title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--color-text); margin: var(--spacing-lg) var(--spacing-base) var(--spacing-sm); }
+.empty-text { text-align: center; color: var(--color-text-muted); font-size: var(--text-base); margin: var(--spacing-2xl); }
 </style>

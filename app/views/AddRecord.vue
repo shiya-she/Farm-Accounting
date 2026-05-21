@@ -121,10 +121,10 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
-.form { padding: 12; }
-.field-label { font-size: 14; color: #555; margin: 8 0 4; }
-.input { border-width: 1; border-color: #ddd; border-radius: 8; padding: 10; background-color: white; font-size: 15; }
-.btn-save { background-color: #2e6b3e; color: white; font-weight: bold; margin: 16 0; border-radius: 8; padding: 14; }
-.unit-label { font-size: 14; color: #666; margin-left: 8; vertical-align: center; }
+.page { background-color: var(--color-bg); }
+.form { padding: var(--spacing-base); }
+.field-label { font-size: var(--text-sm); color: var(--color-text-secondary); margin: var(--spacing-md) 0 var(--spacing-xs); font-weight: var(--font-medium); }
+.input { border-width: 1; border-color: var(--color-border); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-md); background-color: var(--color-surface); font-size: var(--text-base); color: var(--color-text); }
+.btn-save { background-color: var(--color-primary); color: var(--color-text-inverse); font-weight: var(--font-bold); margin: var(--spacing-xl) 0; border-radius: var(--radius-md); padding: var(--spacing-md); font-size: var(--text-lg); elevation: var(--elevation-md); }
+.unit-label { font-size: var(--text-sm); color: var(--color-text-secondary); margin-left: var(--spacing-sm); vertical-align: center; }
 </style>

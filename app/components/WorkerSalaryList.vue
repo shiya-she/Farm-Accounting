@@ -20,10 +20,10 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.chart-container { margin: 12; padding: 12; background-color: #fff; border-radius: 12; }
-.chart-title { font-size: 14; font-weight: bold; color: #333; margin-bottom: 8; }
-.stat-row { padding: 6 0; border-bottom-width: 1; border-bottom-color: #f0f0f0; }
-.stat-label { font-size: 14; color: #333; }
-.stat-value { font-size: 14; font-weight: bold; color: #e74c3c; }
-.empty { text-align: center; color: #999; font-size: 13; margin: 12; }
+.chart-container { margin: var(--spacing-sm) var(--spacing-base); padding: var(--spacing-base); background-color: var(--color-surface); border-radius: var(--radius-lg); elevation: var(--elevation-sm); border-width: 1; border-color: var(--color-border); }
+.chart-title { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); margin-bottom: var(--spacing-sm); }
+.stat-row { padding: var(--spacing-sm) 0; border-bottom-width: 1; border-bottom-color: var(--color-divider); }
+.stat-label { font-size: var(--text-base); color: var(--color-text); }
+.stat-value { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-expense); }
+.empty { text-align: center; color: var(--color-text-muted); font-size: var(--text-sm); margin: var(--spacing-md); }
 </style>

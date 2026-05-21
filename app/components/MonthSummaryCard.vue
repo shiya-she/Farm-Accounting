@@ -31,11 +31,11 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.summary-card { background-color: #fff; border-radius: 12; margin: 12; padding: 16; }
-.card-title { font-size: 16; font-weight: bold; color: #333; margin-bottom: 12; }
+.summary-card { background-color: var(--color-surface); border-radius: var(--radius-xl); margin: var(--spacing-base); padding: var(--spacing-lg); elevation: var(--elevation-md); border-width: 1; border-color: var(--color-border); }
+.card-title { font-size: var(--text-lg); font-weight: var(--font-bold); color: var(--color-text); margin-bottom: var(--spacing-md); }
 .summary-row { text-align: center; }
-.summary-label { font-size: 12; color: #999; }
-.summary-value { font-size: 20; font-weight: bold; margin-top: 4; }
-.income { color: #27ae60; }
-.expense { color: #e74c3c; }
+.summary-label { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.5; }
+.summary-value { font-size: var(--text-xl); font-weight: var(--font-bold); margin-top: var(--spacing-xs); }
+.income { color: var(--color-income); }
+.expense { color: var(--color-expense); }
 </style>

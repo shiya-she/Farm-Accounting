@@ -44,17 +44,17 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
-.content { padding: 12; }
-.add-row { margin-bottom: 8; }
-.input { border-width: 1; border-color: #ddd; border-radius: 8; padding: 10; background-color: white; }
-.type-btn { background-color: #e0e0e0; color: #666; font-size: 12; margin-left: 4; padding: 8 12; border-radius: 4; }
-.type-sel { background-color: #2e6b3e; color: white; font-size: 12; margin-left: 4; padding: 8 12; border-radius: 4; }
-.btn-add { background-color: #2e6b3e; color: white; border-radius: 8; padding: 10; margin-bottom: 12; }
-.item-row { padding: 12 8; background-color: white; border-bottom-width: 1; border-bottom-color: #eee; }
-.tag-income { font-size: 11; color: #27ae60; font-weight: bold; margin-right: 8; }
-.tag-expense { font-size: 11; color: #e74c3c; font-weight: bold; margin-right: 8; }
-.item-name { font-size: 14; color: #333; }
-.btn-del { background-color: #e74c3c; color: white; font-size: 12; padding: 4 12; border-radius: 4; }
-.preset-tag { font-size: 11; color: #999; }
+.page { background-color: var(--color-bg); }
+.content { padding: var(--spacing-base); }
+.add-row { margin-bottom: var(--spacing-sm); }
+.input { border-width: 1; border-color: var(--color-border); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-md); background-color: var(--color-surface); color: var(--color-text); font-size: var(--text-base); }
+.type-btn { background-color: var(--color-bg); color: var(--color-text-secondary); font-size: var(--text-sm); margin-left: var(--spacing-xs); padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--radius-sm); font-weight: var(--font-medium); }
+.type-sel { background-color: var(--color-primary); color: var(--color-text-inverse); font-size: var(--text-sm); margin-left: var(--spacing-xs); padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--radius-sm); font-weight: var(--font-semibold); }
+.btn-add { background-color: var(--color-primary); color: var(--color-text-inverse); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-md); margin-bottom: var(--spacing-md); font-weight: var(--font-semibold); }
+.item-row { padding: var(--spacing-md) var(--spacing-sm); background-color: var(--color-surface); border-bottom-width: 1; border-bottom-color: var(--color-divider); }
+.tag-income { font-size: var(--text-xs); color: var(--color-income); font-weight: var(--font-bold); margin-right: var(--spacing-sm); background-color: var(--color-income-bg); border-radius: var(--radius-sm); padding: 2 6; }
+.tag-expense { font-size: var(--text-xs); color: var(--color-expense); font-weight: var(--font-bold); margin-right: var(--spacing-sm); background-color: var(--color-expense-bg); border-radius: var(--radius-sm); padding: 2 6; }
+.item-name { font-size: var(--text-base); color: var(--color-text); }
+.btn-del { background-color: var(--color-expense); color: var(--color-text-inverse); font-size: var(--text-sm); padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-sm); font-weight: var(--font-medium); }
+.preset-tag { font-size: var(--text-xs); color: var(--color-text-muted); }
 </style>

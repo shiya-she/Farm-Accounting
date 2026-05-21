@@ -36,5 +36,5 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
+.page { background-color: var(--color-bg); }
 </style>

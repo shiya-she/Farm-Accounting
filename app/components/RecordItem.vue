@@ -20,11 +20,11 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.record-item { padding: 12 8; border-bottom-width: 1; border-bottom-color: #eee; }
-.income-icon { font-size: 18; color: #27ae60; font-weight: bold; margin-right: 12; }
-.expense-icon { font-size: 18; color: #e74c3c; font-weight: bold; margin-right: 12; }
-.item-category { font-size: 15; color: #333; }
-.item-note { font-size: 12; color: #999; }
-.income-amount { font-size: 16; color: #27ae60; font-weight: bold; }
-.expense-amount { font-size: 16; color: #e74c3c; font-weight: bold; }
+.record-item { padding: var(--spacing-md) var(--spacing-base); background-color: var(--color-surface); border-bottom-width: 1; border-bottom-color: var(--color-divider); }
+.income-icon { font-size: var(--text-xl); color: var(--color-income); font-weight: var(--font-bold); margin-right: var(--spacing-md); width: 32; text-align: center; }
+.expense-icon { font-size: var(--text-xl); color: var(--color-expense); font-weight: var(--font-bold); margin-right: var(--spacing-md); width: 32; text-align: center; }
+.item-category { font-size: var(--text-base); color: var(--color-text); font-weight: var(--font-medium); }
+.item-note { font-size: var(--text-sm); color: var(--color-text-muted); }
+.income-amount { font-size: var(--text-lg); color: var(--color-income); font-weight: var(--font-bold); }
+.expense-amount { font-size: var(--text-lg); color: var(--color-expense); font-weight: var(--font-bold); }
 </style>

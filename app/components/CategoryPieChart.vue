@@ -27,10 +27,10 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.chart-container { margin: 12; padding: 12; background-color: #fff; border-radius: 12; }
-.chart-title { font-size: 14; font-weight: bold; color: #333; margin-bottom: 8; }
-.pie-row { margin: 4 0; }
-.dot { border-radius: 6; margin-right: 8; vertical-align: center; }
-.pie-label { font-size: 13; color: #333; }
-.pie-value { font-size: 13; font-weight: bold; color: #e74c3c; }
+.chart-container { margin: var(--spacing-sm) var(--spacing-base); padding: var(--spacing-base); background-color: var(--color-surface); border-radius: var(--radius-lg); elevation: var(--elevation-sm); border-width: 1; border-color: var(--color-border); }
+.chart-title { font-size: var(--text-base); font-weight: var(--font-semibold); color: var(--color-text); margin-bottom: var(--spacing-sm); }
+.pie-row { margin: var(--spacing-xs) 0; }
+.dot { border-radius: 6; margin-right: var(--spacing-sm); vertical-align: center; }
+.pie-label { font-size: var(--text-sm); color: var(--color-text); }
+.pie-value { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-expense); }
 </style>

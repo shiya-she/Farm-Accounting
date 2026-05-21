@@ -71,8 +71,8 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.page { background-color: #f5f5f5; }
-.year-nav { margin: 8 12; }
-.nav-btn { background-color: transparent; color: #2e6b3e; font-size: 16; }
-.year-label { font-size: 16; font-weight: bold; color: #333; }
+.page { background-color: var(--color-bg); }
+.year-nav { margin: var(--spacing-sm) var(--spacing-base); background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--spacing-sm); border-width: 1; border-color: var(--color-border); }
+.nav-btn { background-color: transparent; color: var(--color-primary); font-size: var(--text-lg); font-weight: var(--font-bold); }
+.year-label { font-size: var(--text-lg); font-weight: var(--font-bold); color: var(--color-text); vertical-align: center; }
 </style>
